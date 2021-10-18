@@ -5,6 +5,7 @@ import org.bukkit.block.Block;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -32,7 +33,7 @@ public final class CopperOxidizer extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(this, this);
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onInteract(PlayerInteractEvent event) {
 
         Player player = event.getPlayer();
@@ -71,7 +72,7 @@ public final class CopperOxidizer extends JavaPlugin implements Listener {
 
         if (player.getGameMode() != GameMode.CREATIVE)
             player.getInventory().setItem(slot, new ItemStack(Material.BUCKET));
-        
+
         location.getWorld().spawnParticle(Particle.SCRAPE, clicked.getLocation().clone().add(0.5, 0.5, 0.5), 40, 0.25, 0.25, 0.25);
         player.playSound(location, Sound.ITEM_BUCKET_EMPTY, 1F, 1F);
 
