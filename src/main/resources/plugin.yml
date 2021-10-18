@@ -1,0 +1,6 @@
+name: CopperOxidizer
+version: '${version}'
+main: me.zote.cox.CopperOxidizer
+api-version: 1.17
+prefix: COX
+authors: [ Zote ]
